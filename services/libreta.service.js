@@ -10,7 +10,7 @@ class LibretaService {
       include: [
         {
           model: AsignaturaModel, // Incluye el modelo de Asignatura
-          attributes: ["nombre"], // Selecciona solo el campo "nombre"
+          attributes: ["nombre", "indice"], // Selecciona el campo "nombre" y "indice"
         },
         {
           model: EstudianteModel, // Incluye el modelo de Estudiante
@@ -22,6 +22,14 @@ class LibretaService {
             },
           ],
         },
+      ],
+      order: [
+        [
+          // Ordena la relación principal (LibretaModel)
+          { model: AsignaturaModel },
+          "indice",
+          "ASC",
+        ], // Ordena por el campo "indice" de Asignatura
       ],
     });
   }

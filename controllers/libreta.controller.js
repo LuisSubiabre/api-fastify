@@ -13,8 +13,6 @@ class LibretaController {
         return reply.status(404).send({ message: "Libreta no encontrada" });
       }
 
-      console.log("libreta", libreta[0]);
-
       // Verificar si el estudiante está definido
       if (!libreta[0].estudiante) {
         console.log("Estudiante no encontrado en la libreta:", libreta[0]);
@@ -28,6 +26,7 @@ class LibretaController {
         curso_nombre: libreta[0].estudiante.Curso.dataValues.nombre,
         asignaturas: libreta.map((item) => ({
           asignatura_id: item.asignatura_id,
+          indice: item.asignatura.dataValues.indice,
           nombre_asignatura: item.asignatura.dataValues.nombre,
           calificacion1: item.calificacion1,
           calificacion2: item.calificacion2,
