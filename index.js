@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import estudianteRoutes from "./routes/estudiante.route.js";
 import authRoutes from "./routes/auth.route.js";
+import libretaRoutes from "./routes/libreta.route.js";
 import cors from "@fastify/cors";
 import db from "./config/db.js";
 import "dotenv/config";
@@ -25,10 +26,15 @@ fastify.get("/", async (request, reply) => {
   return { hello: "world" };
 });
 
+authRoutes.forEach((route) => {
+  fastify.route(route);
+});
+
 estudianteRoutes.forEach((route) => {
   fastify.route(route);
 });
-authRoutes.forEach((route) => {
+
+libretaRoutes.forEach((route) => {
   fastify.route(route);
 });
 

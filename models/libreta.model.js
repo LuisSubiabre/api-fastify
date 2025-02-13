@@ -1,14 +1,16 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
+import AsignaturaModel from "./asignatura.model.js";
+import EstudianteModel from "./estudiante.model.js";
 
 const LibretaModel = db.define(
-  "EstudiantesAsignaturas",
+  "estudiantes_asignaturas",
   {
     estudiante_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       references: {
-        model: "estudiantes", // Tabla estudiantes
+        model: EstudianteModel, // Usar el modelo directamente
         key: "estudiante_id",
       },
       onDelete: "CASCADE",
@@ -17,110 +19,102 @@ const LibretaModel = db.define(
       type: DataTypes.INTEGER,
       primaryKey: true,
       references: {
-        model: "asignaturas", // Tabla asignaturas
+        model: AsignaturaModel, // Usar el modelo directamente
         key: "asignatura_id",
       },
       onDelete: "CASCADE",
     },
-    fecha_asignacion: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-    },
     calificacion1: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion2: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion3: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion4: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion5: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion6: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion7: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion8: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion9: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion10: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion11: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion12: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion13: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion14: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion15: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion16: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion17: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion18: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion19: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion20: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion21: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion22: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
     },
     calificacion23: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
-    },
-    fecha_actualizacion: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
     },
   },
   {
@@ -128,5 +122,17 @@ const LibretaModel = db.define(
     tableName: "estudiantes_asignaturas",
   }
 );
+
+// Relación con AsignaturaModel
+LibretaModel.belongsTo(AsignaturaModel, {
+  foreignKey: "asignatura_id",
+  targetKey: "asignatura_id",
+});
+
+// Relación con EstudianteModel
+LibretaModel.belongsTo(EstudianteModel, {
+  foreignKey: "estudiante_id",
+  targetKey: "estudiante_id",
+});
 
 export default LibretaModel;
