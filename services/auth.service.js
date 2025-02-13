@@ -12,6 +12,7 @@ class AuthService {
       rut: estudiante.rut,
       curso_id: estudiante.curso_id,
       curso_nombre: estudiante.Curso ? estudiante.Curso.nombre : null, // Verifica si el curso existe
+      nombre: estudiante.nombre,
     };
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
   }
