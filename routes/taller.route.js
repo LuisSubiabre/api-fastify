@@ -20,6 +20,11 @@ const routes = [
     url: "/talleres",
     handler: (req, reply) => tallerController.retirarEstudiante(req, reply),
   },
+  {
+    method: "GET",
+    url: "/talleres/estudiante/:estudiante_id",
+    handler: (req, reply) => tallerController.getTalleresInscritos(req, reply),
+  },
 ];
 
 export default routes;

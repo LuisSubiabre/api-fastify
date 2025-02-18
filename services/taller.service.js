@@ -66,6 +66,19 @@ class TallerService {
 
     return { message: "Estudiante retirado correctamente" };
   }
+
+  // Listar talleres inscritos de un estudiante
+  async getTalleresByEstudianteId(estudiante_id) {
+    return await TallerModel.findAll({
+      include: [
+        {
+          model: TallerEstudianteModel,
+          where: { estudiante_id },
+          attributes: [], // No necesitamos los atributos de TallerEstudianteModel
+        },
+      ],
+    });
+  }
 }
 
 export default TallerService;

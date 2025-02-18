@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
 import TallerCursoModel from "./tallerCurso.model.js";
+import TallerEstudianteModel from "./tallerEstudiante.model.js";
 
 const TallerModel = db.define(
   "talleres",
@@ -53,6 +54,12 @@ const TallerModel = db.define(
 // Definir la relación con TallerCursoModel
 TallerModel.hasMany(TallerCursoModel, {
   foreignKey: "taller_id", // Clave foránea en la tabla talleres_cursos
+  sourceKey: "taller_id", // Clave primaria en la tabla talleres
+});
+
+// Definir la relación con TallerEstudianteModel
+TallerModel.hasMany(TallerEstudianteModel, {
+  foreignKey: "taller_id", // Clave foránea en la tabla taller_estudiante
   sourceKey: "taller_id", // Clave primaria en la tabla talleres
 });
 

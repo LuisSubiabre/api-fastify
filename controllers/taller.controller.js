@@ -47,6 +47,21 @@ class TallerController {
       return reply.status(400).send({ message: error.message });
     }
   }
+
+  // Listar talleres inscritos de un estudiante
+  async getTalleresInscritos(req, reply) {
+    const { estudiante_id } = req.params;
+
+    try {
+      const talleres = await this._tallerService.getTalleresByEstudianteId(
+        estudiante_id
+      );
+      return reply.status(200).send(talleres);
+    } catch (error) {
+      console.error("Error al obtener los talleres inscritos:", error);
+      return reply.status(500).send({ message: "Error interno del servidor" });
+    }
+  }
 }
 
 export default TallerController;

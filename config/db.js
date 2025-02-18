@@ -1,19 +1,21 @@
 import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+
+dotenv.config(); // Cargar variables de entorno desde .env
 
 class DBInstance {
   constructor() {
-    const dbCgf = {
-      user: "admindb",
-      host: "149.50.146.106",
-      database: "liceo",
-      password: "gaga70LAla",
-      port: 5432,
-    };
-    this.sequelize = new Sequelize(dbCgf.database, dbCgf.user, dbCgf.password, {
-      host: dbCgf.host,
-      dialect: "postgres",
-      logging: false,
-    });
+    this.sequelize = new Sequelize(
+      process.env.DB_NAME,
+      process.env.DB_USER,
+      process.env.DB_PASSWORD,
+      {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: "postgres",
+        logging: false,
+      }
+    );
   }
 }
 
