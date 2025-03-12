@@ -3,6 +3,7 @@ import estudianteRoutes from "./routes/estudiante.route.js";
 import authRoutes from "./routes/auth.route.js";
 import libretaRoutes from "./routes/libreta.route.js";
 import tallerRoutes from "./routes/taller.route.js";
+import passwordRoutes from "./routes/password.route.js";
 import cors from "@fastify/cors";
 import db from "./config/db.js";
 import "dotenv/config";
@@ -40,6 +41,10 @@ libretaRoutes.forEach((route) => {
 });
 
 tallerRoutes.forEach((route) => {
+  fastify.route(route);
+});
+
+passwordRoutes.forEach((route) => {
   fastify.route(route);
 });
 
