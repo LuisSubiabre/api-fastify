@@ -49,7 +49,7 @@ passwordRoutes.forEach((route) => {
 });
 
 try {
-  fastify.listen({ port: 3500 });
+  fastify.listen({ port: 3500, host: "0.0.0.0" });
   database();
 } catch (e) {
   console.log(e);
