@@ -27,22 +27,20 @@ class AtrasosController {
 
       // Formatear la respuesta
       const response = {
-        data: {
-          estudiante: {
-            id: atrasos[0]?.estudiante?.estudiante_id,
-            nombre: atrasos[0]?.estudiante?.nombre,
-            rut: atrasos[0]?.estudiante?.rut
-          },
-          atrasos: atrasos.map(atraso => ({
-            id: atraso.atraso_id,
-            fecha: atraso.fecha,
-            hora_registro: atraso.hora_registro,
-            tipo: atraso.tipo,
-            justificado: atraso.justificado,
-            observaciones: atraso.observaciones,
-            fecha_registro: atraso.fecha_registro
-          }))
-        }
+        estudiante: {
+          id: atrasos[0]?.estudiante?.estudiante_id,
+          nombre: atrasos[0]?.estudiante?.nombre,
+          rut: atrasos[0]?.estudiante?.rut
+        },
+        atrasos: atrasos.map(atraso => ({
+          id: atraso.atraso_id,
+          fecha: atraso.fecha,
+          hora: atraso.hora,
+          hora_registro: atraso.hora_registro,
+          tipo: atraso.tipo,
+          justificado: atraso.justificado,
+          observaciones: atraso.observaciones
+        }))
       };
 
       reply.send(response);

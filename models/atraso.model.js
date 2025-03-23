@@ -24,10 +24,14 @@ const AtrasoModel = db.define(
     },
     hora: {
       type: DataTypes.TIME,
+      allowNull: false,
+    },
+    hora_registro: {
+      type: DataTypes.TIME,
       defaultValue: DataTypes.NOW,
     },
     tipo: {
-      type: DataTypes.ENUM("leve", "moderado", "grave"),
+      type: DataTypes.ENUM("llegada", "jornada"),
       allowNull: false,
     },
     justificado: {
