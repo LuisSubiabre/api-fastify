@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.route.js";
 import libretaRoutes from "./routes/libreta.route.js";
 import tallerRoutes from "./routes/taller.route.js";
 import passwordRoutes from "./routes/password.route.js";
+import atrasosRoutes from "./routes/atrasos.route.js";
 import cors from "@fastify/cors";
 import db from "./config/db.js";
 import "dotenv/config";
@@ -47,6 +48,10 @@ tallerRoutes.forEach((route) => {
 passwordRoutes.forEach((route) => {
   fastify.route(route);
 });
+
+atrasosRoutes.forEach((route) => {
+  fastify.route(route);
+} );
 
 try {
   fastify.listen({ port: 3500, host: "0.0.0.0" });
