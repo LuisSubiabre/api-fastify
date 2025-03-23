@@ -5,8 +5,17 @@ class LibretaController {
 
   async getLibretaById(req, reply) {
     const { estudiante_id } = req.params;
+    const estudianteAutenticado = req.estudiante;
 
     try {
+      // Verificar que el estudiante solo pueda ver su propia libreta
+      if (estudianteAutenticado.estudiante_id !== parseInt(estudiante_id)) {
+        return reply.status(403).send({ 
+          error: "Acceso denegado",
+          message: "No tienes permiso para ver la libreta de otro estudiante" 
+        });
+      }
+
       const libreta = await this._libretaService.getLibretaById(estudiante_id);
 
       if (!libreta || libreta.length === 0) {

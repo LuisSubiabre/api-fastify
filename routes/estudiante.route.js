@@ -16,6 +16,7 @@ const routes = [
   {
     method: "GET",
     url: "/estudiante/:id",
+    preHandler: authHook, // Agrega el hook de autenticación
     handler: async (req, res) => {
       const estudianteController = new EstudianteController({
         EstudianteService: estudianteService, // Pasa el servicio al controlador

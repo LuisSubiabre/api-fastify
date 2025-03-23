@@ -7,8 +7,17 @@ class EstudianteController {
 
   async getEstudianteById(req, reply) {
     const { id } = req.params;
+    const estudianteAutenticado = req.estudiante;
 
     try {
+      // Verificar que el estudiante solo pueda ver sus propios datos
+      if (estudianteAutenticado.estudiante_id !== parseInt(id)) {
+        return reply.status(403).send({ 
+          error: "Acceso denegado",
+          message: "No tienes permiso para ver los datos de otro estudiante" 
+        });
+      }
+
       const estudiante = await this._estudianteService.findOne({
         where: { estudiante_id: id },
         include: {
