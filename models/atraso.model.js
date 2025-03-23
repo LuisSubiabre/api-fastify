@@ -22,7 +22,7 @@ const AtrasoModel = db.define(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    hora_registro: {
+    hora: {
       type: DataTypes.TIME,
       defaultValue: DataTypes.NOW,
     },
