@@ -26,7 +26,7 @@ async function database() {
 }
 
 fastify.get("/", async (request, reply) => {
-  return { hello: "world v1.2.0" };
+  return { hello: "world v1.2.1" };
 });
 
 authRoutes.forEach((route) => {
