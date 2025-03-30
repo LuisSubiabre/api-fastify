@@ -24,6 +24,10 @@ const TallerModel = db.define(
     nivel: {
       type: DataTypes.ENUM("pre-basica", "basica", "media"),
     },
+    ubicacion:
+    {
+      type: DataTypes.STRING(100),
+    },
     cantidad_cupos: {
       type: DataTypes.INTEGER,
       allowNull: false,
