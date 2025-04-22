@@ -36,6 +36,7 @@ class LibretaController {
         asignaturas: libreta.map((item) => ({
           asignatura_id: item.asignatura_id,
           indice: item.asignatura.dataValues.indice,
+          concepto: item.asignatura.dataValues.concepto,
           nombre_asignatura: item.asignatura.dataValues.nombre,
           calificacion1: item.calificacion1,
           calificacion2: item.calificacion2,
