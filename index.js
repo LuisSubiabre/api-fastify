@@ -26,7 +26,7 @@ async function database() {
 }
 
 fastify.get("/", async (request, reply) => {
-  return { hello: "world v1.3.0" };
+  return { hello: "world v1.3.1" };
 });
 
 authRoutes.forEach((route) => {
@@ -51,7 +51,7 @@ passwordRoutes.forEach((route) => {
 
 atrasosRoutes.forEach((route) => {
   fastify.route(route);
-} );
+});
 
 try {
   fastify.listen({ port: 3500, host: "0.0.0.0" });

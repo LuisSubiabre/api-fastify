@@ -10,7 +10,7 @@ class LibretaService {
       include: [
         {
           model: AsignaturaModel, // Incluye el modelo de Asignatura
-          attributes: ["nombre", "indice"], // Selecciona el campo "nombre" y "indice"
+          attributes: ["nombre", "indice", "concepto"], // Selecciona el campo "nombre" y "indice"
         },
         {
           model: EstudianteModel, // Incluye el modelo de Estudiante
