@@ -30,7 +30,7 @@ class AuthService {
 
     if (!estudiante) {
       throw new Error(
-        "No se encontró el estudiante con el email proporcionado"
+        "Usuario o contraseña inválidos"
       );
     }
 
