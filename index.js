@@ -5,6 +5,7 @@ import libretaRoutes from "./routes/libreta.route.js";
 import tallerRoutes from "./routes/taller.route.js";
 import passwordRoutes from "./routes/password.route.js";
 import atrasosRoutes from "./routes/atrasos.route.js";
+import asistenciaRoutes from "./routes/asistencia.route.js"
 import cors from "@fastify/cors";
 import db from "./config/db.js";
 import "dotenv/config";
@@ -50,6 +51,10 @@ passwordRoutes.forEach((route) => {
 });
 
 atrasosRoutes.forEach((route) => {
+  fastify.route(route);
+});
+
+asistenciaRoutes.forEach((route) => {
   fastify.route(route);
 });
 
