@@ -28,11 +28,12 @@ class LibretaController {
         return reply.status(404).send({ message: "Estudiante no encontrado" });
       }
 
-      // Formatear la respuesta para incluir el nombre del estudiante y del curso
+      // Formatear la respuesta para incluir el nombre del estudiante, del curso y del profesor jefe
       const response = {
         estudiante_id: libreta[0].estudiante.dataValues.estudiante_id,
         nombre_estudiante: libreta[0].estudiante.dataValues.nombre,
         curso_nombre: libreta[0].estudiante.Curso.dataValues.nombre,
+        profesor_jefe_nombre: libreta[0].estudiante.Curso.profesor_jefe?.dataValues?.nombre || "No asignado",
         asignaturas: libreta.map((item) => ({
           asignatura_id: item.asignatura_id,
           indice: item.asignatura.dataValues.indice,

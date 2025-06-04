@@ -2,6 +2,7 @@ import LibretaModel from "../models/libreta.model.js";
 import AsignaturaModel from "../models/asignatura.model.js";
 import EstudianteModel from "../models/estudiante.model.js";
 import CursoModel from "../models/curso.model.js";
+import UsuarioModel from "../models/usuario.model.js";
 
 class LibretaService {
   async getLibretaById(estudiante_id) {
@@ -19,6 +20,14 @@ class LibretaService {
             {
               model: CursoModel, // Incluye el modelo de Curso
               attributes: ["nombre"], // Selecciona solo el campo "nombre"
+              include: [
+                {
+                  model: UsuarioModel,
+                  as: "profesor_jefe",
+                  attributes: ["nombre"],
+                  foreignKey: "profesor_jefe_id",
+                },
+              ],
             },
           ],
         },

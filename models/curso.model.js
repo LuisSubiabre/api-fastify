@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "../config/db.js";
+import UsuarioModel from "./usuario.model.js";
 
 const CursoModel = db.define(
   "Curso",
@@ -29,7 +30,7 @@ const CursoModel = db.define(
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: "usuarios", // Tabla usuarios
+        model: UsuarioModel,
         key: "usuario_id",
       },
     },
@@ -47,5 +48,11 @@ const CursoModel = db.define(
     tableName: "cursos",
   }
 );
+
+// Definir la relación con el profesor jefe
+CursoModel.belongsTo(UsuarioModel, {
+  foreignKey: "profesor_jefe_id",
+  as: "profesor_jefe",
+});
 
 export default CursoModel;
