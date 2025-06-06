@@ -14,6 +14,12 @@ const routes = [
     preHandler: authHook,
     handler: (req, res) => libretaController.getLibretaById(req, res),
   },
+  {
+    method: "GET",
+    url: "/libreta/promedios/:curso_id",
+    //preHandler: authHook,
+    handler: (req, res) => libretaController.getPromedioPorCurso(req, res),
+  },
 ];
 
 export default routes;

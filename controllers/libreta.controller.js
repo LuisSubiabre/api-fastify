@@ -71,6 +71,23 @@ class LibretaController {
       return reply.status(500).send({ message: "Error interno del servidor" });
     }
   }
+
+  async getPromedioPorCurso(req, reply) {
+    const { curso_id } = req.params;
+
+    try {
+      const promedios = await this._libretaService.getPromedioPorCurso(curso_id);
+
+      if (!promedios || promedios.length === 0) {
+        return reply.status(404).send({ message: "No se encontraron promedios para este curso" });
+      }
+
+      return reply.status(200).send(promedios);
+    } catch (error) {
+      console.error("Error al obtener los promedios del curso:", error);
+      return reply.status(500).send({ message: "Error interno del servidor" });
+    }
+  }
 }
 
 export default LibretaController;
