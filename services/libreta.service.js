@@ -68,6 +68,7 @@ class LibretaService {
       )
       SELECT 
         c.nombre AS curso,
+        a.asignatura_id,
         a.nombre AS asignatura,
         a.concepto AS concepto,
         COUNT(DISTINCT pe.estudiante_id) AS cantidad_estudiantes,
