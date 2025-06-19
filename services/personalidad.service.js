@@ -1,6 +1,7 @@
 import PersonalidadModel from "../models/personalidad.model.js";
 import EstudianteModel from "../models/estudiante.model.js";
 import CursoModel from "../models/curso.model.js";
+import UsuarioModel from "../models/usuario.model.js";
 
 class PersonalidadService {
   async getPersonalidadByEstudianteId(estudianteId) {
@@ -16,6 +17,13 @@ class PersonalidadService {
             include: [
               {
                 model: CursoModel,
+                include: [
+                  {
+                    model: UsuarioModel,
+                    as: "profesor_jefe",
+                    attributes: ["usuario_id", "nombre"],
+                  },
+                ],
                 attributes: ["curso_id", "nombre", "descripcion"],
               },
             ],

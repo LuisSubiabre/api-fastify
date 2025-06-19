@@ -12,7 +12,7 @@ const routes = [
   {
     method: "GET",
     url: "/personalidad/:estudiante_id",
-    // preHandler: authHook,
+    preHandler: authHook,
     handler: (req, res) => personalidadController.getPersonalidadById(req, res),
   },
 ];
